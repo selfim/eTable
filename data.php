@@ -21,18 +21,17 @@ switch ($action) {
 }
 function initDataList()
 {
-	//echo "from initDataList";
+
 	$sql ="SELECT * FROM `et_data`";
 	$query = query_sql($sql);
 	$data =array();
 	while ($row=$query->fetch_assoc()) {
 		$data[] = $row;
 	}
-	//var_dump($data);
+	
 	echo json_encode($data);
 }
 function delRow(){
-	//echo "ok";
 	$dataId = $_POST['dataId'];
 	$sql ="DELETE FROM `et_data` WHERE `id`=".$dataId;
 	if (query_sql($sql)) {
@@ -63,7 +62,7 @@ function editRow(){
 	$id = $_POST['id'];
 	unset($_POST['id']);
 	for($i = 0 ; $i < 8 ; $i++){
-		$sql .= ' `c_' . chr(97+$i) . '` = \'' . $_POST['col_' . $i] . '\' , ';
+		$sql .= ' `c_' . chr(97+$i) . '` = \'' . $_POST['col_' . $i] . '\' , ';//ASCII码
 	}
 	$sql = trim($sql,", ");
 	$sql .= ' WHERE `id` = ' . $id ;
