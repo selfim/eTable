@@ -39,7 +39,7 @@ $(function() {
 			}
 			var optTd =$('<td></td>');
 			var saveButton =$("<a href='javascript:;' class='optLink'>保存&nbsp;</a>");
-
+			//保存编辑事件
 			saveButton.click(function(){
 				var currentRow = $(this).parent().parent();
 				var inputFields =currentRow.find("input");
